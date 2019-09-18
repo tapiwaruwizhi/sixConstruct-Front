@@ -42,6 +42,10 @@
                                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                                             <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                                                           </mat-form-field>
+                                                          <mat-form-field>
+                                                            <input matInput placeholder="Age" [(ngModel)]='Age' formControlName="age"
+                                                              class="form-control" name="age" ngModel required>
+                                                          </mat-form-field>
                                                           <br>
                                                           <mat-form-field>
                                                             <mat-label>Department</mat-label>

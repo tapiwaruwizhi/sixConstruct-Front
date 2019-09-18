@@ -25,6 +25,8 @@ export class EditComponent implements OnInit {
   DepartmentId :any;
   DateOfBirth :any;
   responseData:any;
+  employeeresponse:any;
+  Age:any;
 
   form;
   form1;
@@ -47,6 +49,7 @@ export class EditComponent implements OnInit {
         empName: ['', Validators.required],
         empdob: ['', Validators.required],
         empDep: ['', Validators.required],
+        age:[''],
    
       });
      }
@@ -86,13 +89,15 @@ export class EditComponent implements OnInit {
     })  
 
     this.dataservice.getEmployeeById(data).then(c =>{
-      console.log(c);
+     
       this.employee = c;
-      this.employeeNumber = this.employee.EmployeeNumber;
-      this.Name = this.employee.Name;
-      this.DepartmentId = this.employee.DepartmentId;
-      this.DateOfBirth = this.employee.DateOfBirth;
-    
+      this.employeeNumber = this.employee.employeedetails.EmployeeNumber;
+      this.Name = this.employee.employeedetails.Name;
+      this.DepartmentId = this.employee.employeedetails.DepartmentId;
+      this.DateOfBirth = this.employee.employeedetails.DateOfBirth;
+      this.Age = this.employee.age;
+      console.log(this.Age)
+      console.log(this.Name)
     })
 
 
@@ -130,8 +135,9 @@ export class EditComponent implements OnInit {
       
     }
    }, (err) => {
-    this.spinner.hide()
+    this.spinner.hide() 
      this.alertService.error("An Error Ocurred")
+     
   });
    }
 ///Update Employees
@@ -150,7 +156,8 @@ this.spinner.show();
   this.alertService.warn("Could Not Update Employee")
      }
      else{
-      
+      this.spinner.hide();
+      this.ngOnInit();
       this.alertService.success("Successfully Updated")
     }
    }, (err) => {
