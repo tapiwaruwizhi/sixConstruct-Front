@@ -1,0 +1,77 @@
+<mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Edit Department">
+                <ng-template matTabContent >
+                                <alert></alert>
+                                <table>
+                                                <tr>
+                                                        <td>
+                                                                <input type="number" class="form-control"
+                                                                        [(ngModel)]='departmentdataId' />
+                
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                <input type="text" class="form-control"
+                                                                        [(ngModel)]='departmentdataDes' />
+                                                        </td>
+                                                <tr>
+                                                        <button class="btn btn-info" (click)='updateDepartment()'>Update
+                                                                Department</button>
+                                                </tr>
+                                        </table>
+                </ng-template>
+        </mat-tab>
+        <mat-tab label="Edit Employee">
+                        
+                        <ng-template matTabContent>
+<alert></alert>
+                                        <table>
+                                                <tr>
+                                                        <td>
+                                                                <input type="text" class="form-control"
+                                                                        [(ngModel)]='EmployeeNumber'
+                                                                        placeholder="Employee Number" />
+                                                        </td>
+                                                <tr>
+                                                        <td> <input type="text" class="form-control" [(ngModel)]='Name'
+                                                                        placeholder="Employee Name" />
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                
+                                                        <td>
+                                                                <mat-form-field>
+                                                                        <input matInput [matDatepicker]="picker"
+                                                                                [(ngModel)]='DateOfBirth '
+                                                                             >
+                                                                        <mat-datepicker-toggle matSuffix [for]="picker">
+                                                                        </mat-datepicker-toggle>
+                                                                        <mat-datepicker #picker startView="year" [startAt]="startDate">
+                                                                        </mat-datepicker>
+                                                                </mat-form-field>
+                
+                
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                <mat-form-field>
+                                                                        
+                                                                        <mat-select [(ngModel)]="DepartmentId"
+                                                                                name="empdepartment">
+                                                                                <mat-option *ngFor="let de of departments"
+                                                                                        [value]="de.Id">
+                                                                                        {{de.Description}}
+                                                                                </mat-option>
+                                                                        </mat-select>
+                                                                </mat-form-field>
+                                                        </td>
+                                                </tr>
+                                                <button class="btn btn-info" (click)='upDateEmployee()'>Update Employee</button>
+                                        </table>
+                                </ng-template>
+        </mat-tab>
+
+
+</mat-tab-group>

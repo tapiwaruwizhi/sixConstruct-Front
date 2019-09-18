@@ -1,0 +1,110 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Departments">
+    <ng-template matTabContent>
+      <alert></alert>
+      <table class="table table-striped">
+        <tr *ngFor="let de of departments">
+          <td>
+            {{de.Id}}
+          </td>
+          <td>
+            {{de.Description}}
+          </td>
+          <td>
+            <a [routerLink]="['/editPage/', de.Id]">Update</a>
+          </td>
+          <td>
+            <button type=button class="btn btn-primary" (click)="deleteDepartments(de)">Delete</button>
+          </td>
+        </tr>
+      </table>
+      <br><br>
+      <div align='center'>
+        <h4>New Department</h4>
+      </div>
+
+      <form id="departmentForm" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field>
+          <input matInput placeholder="Department Id" [(ngModel)]='departmentadata.Id' formControlName="depId"
+            class="form-control" name="depId" ngModel required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea rows="4" cols="50" matInput placeholder="Description" [(ngModel)]='departmentadata.Description'
+            formControlName="DepDes" class="form-control" name="DepDes" ngModel required></textarea>
+        </mat-form-field>
+        <br>
+        <button id="btnSubmit" mat-raised-button type="submit" color="primary">Submit</button>
+      </form>
+
+      
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Employees">
+    <ng-template matTabContent>
+      <alert></alert>
+      <table class="table table-striped">
+        <tr *ngFor="let ep of employees">
+          <td>
+            {{ep.EmployeeNumber}}
+          </td>
+          <td>
+            {{ep.Name}}
+          </td>
+          <td>
+            {{ep.DepartmentId}}
+          </td>
+          <td>
+            {{ep.DateOfBirth}}
+          </td>
+          <td>
+            <a [routerLink]="['/editPage/', ep.EmployeeNumber]">Update</a>
+
+          </td>
+          <td>
+            <button class="btn btn-info" (click)='deleteEmployee(ep)'>Delete</button>
+          </td>
+        </tr>
+      </table>
+
+      <br><br>
+      <div align='center'>
+        <h4>New Employee</h4>
+      </div>
+
+
+
+      <form id="empform" [formGroup]="form" (ngSubmit)="submit1()">
+        <mat-form-field>
+          <input matInput placeholder="Employee Number" [(ngModel)]='employeedata.EmployeeNumber'
+            formControlName="employeeNum" class="form-control" name="employeeNum" ngModel required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Full Name" [(ngModel)]='employeedata.Name' formControlName="empName"
+            class="form-control" name="empName" ngModel required>
+        </mat-form-field>
+        <br>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" [(ngModel)]='employeedata.DateOfBirth ' formControlName="empdob"
+            class="form-control"name="empdob" ngModel required placeholder="Date Of Birth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select [(ngModel)]="employeedata.DepartmentId" name="empdepartment"  formControlName="empDep"
+            class="form-control" name="empDep" ngModel required>
+              <mat-option *ngFor="let de of departments" [value]="de.Id">
+                {{de.Description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button id="btnSubmit" mat-raised-button type="submit" color="primary">Submit</button>
+      </form>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>
