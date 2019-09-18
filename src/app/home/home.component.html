@@ -91,7 +91,7 @@
           <br>
           <mat-form-field>
             <mat-label>Department</mat-label>
-            <mat-select [(ngModel)]="employeedata.DepartmentId" name="empdepartment"  formControlName="empDep"
+            <mat-select [(ngModel)]="employeedata.DepartmentId"  formControlName="empDep"
             class="form-control" name="empDep" ngModel required>
               <mat-option *ngFor="let de of departments" [value]="de.Id">
                 {{de.Description}}

@@ -43,7 +43,7 @@ export class EditComponent implements OnInit {
    
       });
       this.form1 =fb.group({
-        employeeNum: ['',Validators.required,Validators.maxLength(5)],
+        employeeNum: ['',Validators.required],
         empName: ['', Validators.required],
         empdob: ['', Validators.required],
         empDep: ['', Validators.required],

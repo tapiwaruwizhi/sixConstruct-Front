@@ -52,7 +52,7 @@ departmentForm: FormGroup;
  
     });
     this.form1 =fb.group({
-      employeeNum: ['',Validators.required,Validators.maxLength(5)],
+      employeeNum: ['',Validators.required],
       empName: ['', Validators.required],
       empdob: ['', Validators.required],
       empDep: ['', Validators.required],
@@ -64,7 +64,7 @@ departmentForm: FormGroup;
    this.addDepartment();
     }
     else{
-      alert("FILL ALL FIELDS")
+      alert(" check all fields")
     }
   }
   submit1(){
