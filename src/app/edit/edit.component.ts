@@ -121,13 +121,16 @@ export class EditComponent implements OnInit {
      this.responseDataDepartment = result;
      if(this.responseDataDepartment == 0){
      this.spinner.hide()
-     this.alertService.success("Successfully Updated")
+     
+     this.alertService.warn("Could Not Update Department")
  }
      else{
-      this.alertService.warn("Could Not Update Department")
+      this.spinner.hide()
+      this.alertService.success("Successfully Updated")
       
     }
    }, (err) => {
+    this.spinner.hide()
      this.alertService.error("An Error Ocurred")
   });
    }
@@ -144,11 +147,11 @@ this.spinner.show();
      this.responseData = result;
      if(this.responseData == 0){
   this.spinner.hide();
-  this.alertService.success("Successfully Updated")
+  this.alertService.warn("Could Not Update Employee")
      }
      else{
-      this.alertService.warn("Could Not Update Employee")
       
+      this.alertService.success("Successfully Updated")
     }
    }, (err) => {
     this.alertService.error("An Error Ocurred")

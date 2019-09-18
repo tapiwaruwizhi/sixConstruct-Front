@@ -78,16 +78,15 @@ return new Promise((resolve, reject) => {
   }
 ////////////edit department
   editDepartment(data) {
-    let options = {
-      headers: new HttpHeaders({
+
+    let headers = new HttpHeaders(
+      {
         'Content-Type': 'Application/json',
         'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT,OPTIONS'
-      }),
-      body: data,
-    };
+      });
      console.log(data)
     return new Promise((resolve, reject) => {
-      this.http.put(this.urlEditDepartment , JSON.stringify(data))
+      this.http.patch(this.urlEditDepartment +data.Id, JSON.stringify(data),{headers})
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -97,14 +96,7 @@ return new Promise((resolve, reject) => {
   }
 /////////////delete department
   deleteDepartment(data) {
-    let options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'Application/json',
-        'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT,OPTIONS'
-      }),
-      body: data,
-    };
-console.log("delete data",data)
+
     return this.http
       .delete(this.urlDeleteDepartment + data.id)
       .pipe(map((response: any) => response.json()));
@@ -151,16 +143,14 @@ console.log("delete data",data)
   }
 ////////////edit employee
   editEmployee(data) {
-    let options = {
-      headers: new HttpHeaders({
+    let headers = new HttpHeaders(
+      {
         'Content-Type': 'Application/json',
         'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT,OPTIONS'
-      }),
-      body: data,
-    };
+      });
      console.log(data)
     return new Promise((resolve, reject) => {
-      this.http.put(this.urlEditEmployee , JSON.stringify(data))
+      this.http.patch(this.urlEditEmployee +data.EmployeeNumber, JSON.stringify(data),{headers})
         .subscribe(res => {
           resolve(res);
         }, (err) => {
