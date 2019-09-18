@@ -59,10 +59,6 @@ departmentForm: FormGroup;
  
     });
    }
-
-   
-
-
   submit() {
     if (this.form.valid) {
    this.addDepartment();
@@ -153,8 +149,10 @@ getEmployees(){
     
   }, (err) => {
     this.alertService.error('Error occured')
+    this.spinner.hide();
 console.log(err)
   });
+  this.spinner.hide();
 }
 ////////////add employee//////////
 addEmployee(){

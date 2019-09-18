@@ -37,7 +37,7 @@
         <button id="btnSubmit" mat-raised-button type="submit" color="primary">Submit</button>
       </form>
 
-      
+
     </ng-template>
   </mat-tab>
   <mat-tab label="Employees">
@@ -71,10 +71,7 @@
       <div align='center'>
         <h4>New Employee</h4>
       </div>
-
-
-
-      <form id="empform" [formGroup]="form" (ngSubmit)="submit1()">
+      <form id="empform" [formGroup]="form1" (ngSubmit)="submit1()">
         <mat-form-field>
           <input matInput placeholder="Employee Number" [(ngModel)]='employeedata.EmployeeNumber'
             formControlName="employeeNum" class="form-control" name="employeeNum" ngModel required>
